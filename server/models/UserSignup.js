@@ -33,7 +33,18 @@ const userSchema = new Schema({
   ],
 });
 
-// two models: one signup and then one description (+about me char 280)
+userSchema.pre('save', async function(next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
+});
+
+userSchema.methods.isCorrectPassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
+}
 
 const User = mongoose.model("User", userSchema);
 

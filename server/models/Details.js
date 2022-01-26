@@ -17,6 +17,10 @@ const detailSchema = new Schema({
     },
     hobbies: {
         type: [String]
+    },
+    aboutMe: {
+        type: String,
+        maxlength: 280
     }
 });
 
