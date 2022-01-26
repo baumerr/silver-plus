@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const detailSchema = new Schema({
-    nickName = {
+    nickName: {
         type: String
     },
     age: {

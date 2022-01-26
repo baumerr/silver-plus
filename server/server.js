@@ -5,6 +5,7 @@ const path = require("path");
 require('dotenv').config();
 
 const { typeDefs, resolvers } = require("./schemas");
+const { authMiddleware } = require('./utils/auth');
 const db = require("./config/connection");
 
 const PORT = process.env.PORT;
@@ -14,6 +15,7 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: authMiddleware
   });
   await server.start();
   server.applyMiddleware({ app });
