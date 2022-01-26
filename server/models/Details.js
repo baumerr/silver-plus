@@ -21,6 +21,9 @@ const detailSchema = new Schema({
     aboutMe: {
         type: String,
         maxlength: 280
+    },
+    location: {
+        type: String
     }
 });
 

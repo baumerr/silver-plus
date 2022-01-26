@@ -1,9 +1,12 @@
-const { UserSignup } = require("../models");
+const { UserSignup, Detail } = require("../models");
+const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return UserSignup.find();
+    users: async (parent, args, context) => {
+      if (context.user) {
+        const user = await UserSignup.find()
+      }
     },
   },
 };
