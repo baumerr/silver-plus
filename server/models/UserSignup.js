@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const detailSchema = require('./Details');
 
 const { Schema } = mongoose;
 
@@ -25,12 +26,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  details: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Details",
-    },
-  ],
+  details: [detailSchema],
 });
 
 userSchema.pre('save', async function(next) {

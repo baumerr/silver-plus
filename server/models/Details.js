@@ -15,9 +15,11 @@ const detailSchema = new Schema({
     gender: {
         type: String
     },
-    hobbies: {
-        type: [String]
-    },
+    hobbies: [
+        {
+            type: String
+        }
+    ],
     aboutMe: {
         type: String,
         maxlength: 280
@@ -27,6 +29,4 @@ const detailSchema = new Schema({
     }
 });
 
-const Detail = mongoose.model('Detail', detailSchema);
-
-module.exports = Detail;
+module.exports = detailSchema;
