@@ -7,7 +7,7 @@ const detailSchema = new Schema({
         type: String
     },
     age: {
-        type: Number
+        type: String
     },
     previousOccupation: {
         type: String

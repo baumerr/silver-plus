@@ -11,7 +11,7 @@ const typeDefs = gql`
     type Detail {
         _id: ID
         nickName: String
-        age: Number
+        age: String
         previousOccupation: String
         gender: String
         hobbies: [String]
@@ -25,14 +25,16 @@ const typeDefs = gql`
     }
 
     type Query {
-        me: User
+        me: UserSignup
         users: UserSignup
+        user: UserSignup
     }
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-        addDetail(nickName: String, age: Number, previousOccupation: String, gender: String, details: [String], aboutMe: String, location: String): UserSignup
+        addDetail(nickName: String, age: String, previousOccupation: String, gender: String, details: [String], aboutMe: String, location: String): UserSignup
         login(email: String!, password: String!): Auth
+        updateDetail(nickName: String, age: String, previousOccupation: String, gender: String, details: [String], aboutMe: String, location: String): UserSignup
     }
 `;
 
