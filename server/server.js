@@ -1,30 +1,44 @@
+require("dotenv").config({ path: "./.env" });
 const express = require("express");
-const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
-
-const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
+const { ApolloServer } = require("apollo-server-express");
+const typeDefs = require("./schemas/typeDefs");
+const resolvers = require("./schemas/resolvers");
+const { getUser } = require("./utils/auth");
 
-const PORT = process.env.PORT || 3001;
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-const startServer = async () => {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
-  await server.start();
-  server.applyMiddleware({ app });
-  console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-};
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => {
+    const authHeader = req.headers.authorization || "";
 
-startServer();
+    if (authHeader) {
+      let token = authHeader.split(" ").pop().trim();
 
-app.use(express.urlencoded({ extended: false }));
+      // Try to retrieve a user with the token
+      const user = getUser(token);
+
+      // Add the user to the context
+      return { user };
+    }
+  },
+});
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-db.once("open", () => {
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-  });
+// if we're in production, serve client/build as static assets
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../client/build")));
+// }
+
+db.once("open", async () => {
+  await server.start();
+
+  server.applyMiddleware({ app });
+  app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
 });
