@@ -7,8 +7,8 @@ const resolvers = {
     me: async (parent, args, context) => {
       if(context.user) {
         const userData = await UserSignup.findOne({ _id: context.user._id})
-          .select('-__v -password')
-          .populate('details');
+          //.select('-__v')
+          //.populate('details');
 
         return userData;
       }
@@ -16,8 +16,8 @@ const resolvers = {
     user: async (parent, { _id }, context) => {
       if(context.user) {
         const userData = await UserSignup.findById(_id)
-          .select('-__v -password')
-          .populate('details');
+          //.select('-__v')
+          //.populate('details');
 
         return userData;
       }
@@ -26,7 +26,7 @@ const resolvers = {
     users: async (parent, args, context) => {
       if (context.user) {
         const users = await UserSignup.find()
-          .select('__v -password');
+          //.select('__v');
 
         return users;
       }
