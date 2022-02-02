@@ -1,22 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
-function Nav(props) {
-    const { navLinks, currentPage, setCurrentPage } = props;
-
+const Nav = () => {
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
+    };
     return (
-        <nav>
-            <ul className='nav-links'>
-                {navLinks.map(link => (
-                    <li key={link}>
-                        <h2
-                        className={`nav-link ${currentPage === link && 'navActive'}`}
-                        onClick={() => {
-                            setCurrentPage(link)
-                        }}>{link}</h2>
-                    </li>
-                ))};
-            </ul>
-        </nav>
+        <header className='bg-secondary mb-4 py-2 flex-row align-center'>
+            <div className='container flex-row justify-space-between-lg justify-center align-center'>
+                <Link to="/">
+                    <h1>Silver Plus: Dating for the Elderly</h1>
+                </Link>
+
+                <nav className='text-center'>
+                {Auth.loggedIn() ? (
+                <>
+                <Link to="/profile">My Silver Plus Profile</Link>
+                    <a href="/" onClick={logout}>
+                    Logout
+                    </a>
+                </>
+                ) : (
+                <>
+                    <Link to="/login">Login</Link>
+                    <Link to="/signup">Sign-Up</Link>
+                </>
+                )}
+                </nav>
+            </div>
+        </header>
     );
 };
 
