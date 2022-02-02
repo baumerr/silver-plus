@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState } from 'react';
+import Nav from './components/Nav';
+import Home from './components/Home';
+import Messages from './components/Messages';
+import Profile from './components/My-Profile';
 
 function App() {
+  const navLinks = ['My Profile', 'Messages', 'Sign-In', 'Sign-Up'];
+  const [ currentPage, setCurrentPage ] = useState(navLinks[0]);
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'My Profile':
+        return <Profile />;
+      case 'Messages':
+        return <Messages />;
+      case 'Sign-In':
+        return <Sign-In />;
+      case 'Sign-Up':
+        return <Sign-Up />;
+      default:
+        return <Home />
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <main className='flex column align-center'>
+      <img
+      src={require('./assets/silver-plus-header.png')}
+      className='logo'
+      alt='Silver Plus Dating'/>
+      <Nav
+      navLinks={navLinks}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      />
+      {renderPage()}
+      <footer className='flex justify-center align-center'>
+        <a href='https://insert-silver-plus-privacy-policy' className='footer-link' target='_blank' rel='noreferrer'>
+          Silver Plus Privacy policy
         </a>
-      </header>
-    </div>
+        <a href='https://insert-silver-plus-TOC' className='footer-link' target='_blank' rel='noreferrer'>
+          Silver Plus Terms and Conditions
+        </a>
+      </footer>
+    </main>
   );
-}
+};
 
 export default App;
