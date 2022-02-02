@@ -1,7 +1,6 @@
 const { UserSignup } = require("../models");
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const User = require("../models/UserSignup");
 
 const resolvers = {
   Query: {
@@ -25,10 +24,11 @@ const resolvers = {
       throw new AuthenticationError('You must be logged in to view this profile!');
     },
     users: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
         const users = await UserSignup.find()
-          .select('__v -password');
-
+          //.select('__v -password');
+        console.log(users);
         return users;
       }
       throw new AuthenticationError("You must be logged in to view profiles!");
