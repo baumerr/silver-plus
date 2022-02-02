@@ -1,11 +1,13 @@
 import React, {useState } from 'react';
 import Nav from './components/Nav';
-import Home from './components/Home';
-import Messages from './components/Messages';
-import Profile from './components/My-Profile';
+import Home from './pages/Home';
+import Messages from './pages/Messages';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
-  const navLinks = ['My Profile', 'Messages', 'Sign-In', 'Sign-Up'];
+  const navLinks = ['My Profile', 'Messages', 'Login', 'Sign-Up'];
   const [ currentPage, setCurrentPage ] = useState(navLinks[0]);
 
   const renderPage = () => {
@@ -14,10 +16,10 @@ function App() {
         return <Profile />;
       case 'Messages':
         return <Messages />;
-      case 'Sign-In':
-        return <Sign-In />;
+      case 'Login':
+        return <Login />;
       case 'Sign-Up':
-        return <Sign-Up />;
+        return <Signup />;
       default:
         return <Home />
     }
