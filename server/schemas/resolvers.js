@@ -7,8 +7,8 @@ const resolvers = {
     me: async (parent, args, context) => {
       if(context.user) {
         const userData = await UserSignup.findOne({ _id: context.user._id})
-          .select('-__v -password')
-          .populate('details');
+          //.select('-__v')
+          //.populate('details');
 
         return userData;
       }
@@ -16,8 +16,8 @@ const resolvers = {
     user: async (parent, { _id }, context) => {
       if(context.user) {
         const userData = await UserSignup.findById(_id)
-          .select('-__v -password')
-          .populate('details');
+          //.select('-__v')
+          //.populate('details');
 
         return userData;
       }
@@ -27,8 +27,8 @@ const resolvers = {
       console.log(context.user);
       if (context.user) {
         const users = await UserSignup.find()
-          //.select('__v -password');
-        console.log(users);
+          //.select('__v');
+
         return users;
       }
       throw new AuthenticationError("You must be logged in to view profiles!");
@@ -63,7 +63,7 @@ const resolvers = {
         const details = await UserSignup.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { details: args } },
-          { new: true, runValidators }
+          { new: true, runValidators: true }
         );
 
         return details;
@@ -75,10 +75,21 @@ const resolvers = {
         const details = await UserSignup.findOneAndUpdate(
           { _id: context.user._id },
           { $push: { details: args } },
-          { new: true, runValidators }
+          { new: true, runValidators: true }
         );
 
         return details;
+      }
+      throw new AuthenticationError('You must be logged in to update your details!');
+    },
+    deleteUser: async (parent, args, context) => {
+      if(context.user) {
+        const user = await UserSignup.findOneAndDelete(
+          { _id: args._id },
+          { new: true }
+        );
+
+        return user;
       }
       throw new AuthenticationError('You must be logged in to update your details!');
     }
