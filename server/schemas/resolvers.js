@@ -35,7 +35,9 @@ const resolvers = {
     },
     messageChain: async (parent, args, context, info) => {
       const { id } = args;
-      return await MessageChain.findOne({ _id: id });
+      const messageChain = await MessageChain.findOne({ _id: id });
+      console.log(messageChain);
+      return messageChain;
     },
     message: async (parent, args, context, info) => {
       const { id } = args;
