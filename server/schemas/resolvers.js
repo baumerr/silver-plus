@@ -71,11 +71,25 @@ const resolvers = {
     },
     updateDetail: async (parent, args, context) => {
       if(context.user) {
+        // const oldDetails = await UserSignup.findOne({ _id: context.user._id});
+        // const deleteOld = UserSignup.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $pull: { details:  [oldDetails.details] } },
+        //   { new: true, runValidators: true }
+        // );
+        // const newDetails = UserSignup.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $pull: { details: args } },
+        //   { new: true, runValidators: true }
+        // );
+          
+        //console.log(oldDetails.details)
         const details = await UserSignup.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { details: args } },
+          { $addToSet: { details: args } },
           { new: true, runValidators: true }
         );
+
 
         return details;
       }
