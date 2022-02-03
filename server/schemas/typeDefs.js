@@ -23,11 +23,31 @@ const typeDefs = gql`
         token: ID
         user: UserSignup
     }
+    
+    type MessageChain {
+    _id: String
+    creatorid: String
+    receiverid: String
+    postid: String
+    createdAt: String
+    updatedAt: String
+  }
+  
+  type Message {
+    _id: String
+    senderid: String
+    chainid: String
+    content: String
+    createdAt: String
+    updatedAt: String
+  }
 
     type Query {
         me: UserSignup
         users: [UserSignup]
         user(_id: String!): UserSignup
+        messageChain(id: String): MessageChain
+    message(id: String): Message
     }
 
     type Mutation {
@@ -36,6 +56,12 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         updateDetail(nickName: String, age: String, previousOccupation: String, gender: String, hobbies: [String], aboutMe: String, location: String): UserSignup
         deleteUser(_id: String!): UserSignup
+        addMessageChain(
+      creatorid: String
+      receiverid: String
+      postid: String
+    ): MessageChain
+    addMessage(senderid: String, chainid: String, content: String): Message
     }
 `;
 
