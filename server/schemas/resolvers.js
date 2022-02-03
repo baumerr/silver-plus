@@ -35,7 +35,9 @@ const resolvers = {
     },
     messageChain: async (parent, args, context, info) => {
       const { id } = args;
-      return await MessageChain.findOne({ _id: id });
+      const messageChain = await MessageChain.findOne({ _id: id });
+      console.log(messageChain);
+      return messageChain;
     },
     message: async (parent, args, context, info) => {
       const { id } = args;
@@ -103,23 +105,27 @@ const resolvers = {
     },
     addMessageChain: async (parent, args, context, info) => {
       const { creatorid, receiverid, postid } = args;
-      const messageChain = await MessageChain.create({
-        creatorid,
-        receiverid,
-        postid,
-      });
-
-      return messageChain;
+      if(context.user) {
+        const messageChain = await MessageChain.create({
+          creatorid,
+          receiverid,
+          postid,
+        });
+        return messageChain;
+      }
+      throw new AuthenticationError('You must be logged in to send messages!');
     },
     addMessage: async (parent, args, context, info) => {
       const { senderid, chainid, content } = args;
-      const message = await Message.create({
-        senderid,
-        chainid,
-        content,
-      });
-
-      return message;
+      if(context.user) {
+        const message = await Message.create({
+          senderid,
+          chainid,
+          content,
+        });
+        return message;
+      }
+      throw new AuthenticationError('You must be logged in to send messages!');
     },
   }
 };

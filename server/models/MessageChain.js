@@ -27,6 +27,6 @@ const messageChainSchema = new Schema({
   },
 });
 
-const MessaageChain = model("MessaageChain", messageChainSchema);
+const MessageChain = model("MessageChain", messageChainSchema);
 
-module.exports = MessaageChain;
+module.exports = MessageChain;
