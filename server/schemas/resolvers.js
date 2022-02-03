@@ -33,6 +33,14 @@ const resolvers = {
       }
       throw new AuthenticationError("You must be logged in to view profiles!");
     },
+    messageChain: async (parent, args, context, info) => {
+      const { id } = args;
+      return await MessageChain.findOne({ _id: id });
+    },
+    message: async (parent, args, context, info) => {
+      const { id } = args;
+      return await Message.findOne({ _id: id });
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -92,7 +100,27 @@ const resolvers = {
         return user;
       }
       throw new AuthenticationError('You must be logged in to update your details!');
-    }
+    },
+    addMessageChain: async (parent, args, context, info) => {
+      const { creatorid, receiverid, postid } = args;
+      const messageChain = await MessageChain.create({
+        creatorid,
+        receiverid,
+        postid,
+      });
+
+      return messageChain;
+    },
+    addMessage: async (parent, args, context, info) => {
+      const { senderid, chainid, content } = args;
+      const message = await Message.create({
+        senderid,
+        chainid,
+        content,
+      });
+
+      return message;
+    },
   }
 };
 
