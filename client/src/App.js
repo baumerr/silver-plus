@@ -1,51 +1,56 @@
-import React, {useState } from 'react';
-import Nav from './components/Nav';
-import Home from './pages/Home';
-import Messages from './pages/Messages';
-import Profile from './pages/Profile';
+import { ApolloProvider, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/context';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
+
 import Login from './pages/Login';
+import Home from './pages/Home';
+import NoMatch from './pages/NoMatch';
+import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 
+import Header from './components/Nav';
+import Footer from './components/Footer';
+
+const httpLink = createHttpLink({
+  uri: '/graphql'
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
-  const navLinks = ['My Profile', 'Messages', 'Login', 'Sign-Up'];
-  const [ currentPage, setCurrentPage ] = useState(navLinks[0]);
-
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'My Profile':
-        return <Profile />;
-      case 'Messages':
-        return <Messages />;
-      case 'Login':
-        return <Login />;
-      case 'Sign-Up':
-        return <Signup />;
-      default:
-        return <Home />
-    }
-  }
-
   return (
-    <main className='flex column align-center'>
-      <img
-      src={require('./assets/silver-plus-header.png')}
-      className='logo'
-      alt='Silver Plus Dating'/>
-      <Nav
-      navLinks={navLinks}
-      currentPage={currentPage}
-      setCurrentPage={setCurrentPage}
-      />
-      {renderPage()}
-      <footer className='flex justify-center align-center'>
-        <a href='https://insert-silver-plus-privacy-policy' className='footer-link' target='_blank' rel='noreferrer'>
-          Silver Plus Privacy policy
-        </a>
-        <a href='https://insert-silver-plus-TOC' className='footer-link' target='_blank' rel='noreferrer'>
-          Silver Plus Terms and Conditions
-        </a>
-      </footer>
-    </main>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className='flex-column justify-flex-start min-100-vh'>
+          <Header />
+          <div className='container'>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={Signup} />
+              <Route exact path="/profile/:username?" component={Profile} />
+
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 };
 
