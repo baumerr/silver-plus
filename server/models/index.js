@@ -1,5 +1,5 @@
 const UserSignup = require('./UserSignup');
-const MessaageChain = require("./MessaageChain");
-const Messaage = require("./Messaage");
+const MessageChain = require("./MessageChain");
+const Message = require("./Message");
 
-module.exports = { UserSignup, Messaage, MessaageChain };
+module.exports = { UserSignup, Message, MessageChain };
