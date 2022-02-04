@@ -42,9 +42,9 @@ This project has a Other license.
 * Fairfax Lovelace Github: [https://github.com/flovelace](https://github.com/flovelace) Email: [lovelace.af@gmail.com](mailto:lovelace.af@gmail.com)
   
 ## Contribution
-*You can contribute by testing the app and give feedbacks. 
-*You can contribute by Reviewing the code and give constructive criticism.
-*You can contribute by giving your opinions or ideas for additional features.
+* You can contribute by testing the app and give feedbacks. 
+* You can contribute by Reviewing the code and give constructive criticism.
+* You can contribute by giving your opinions or ideas for additional features.
 
 ## Questions
 here is the link to my Github: [github.com/shanthosh3](github.com/shanthosh3)
