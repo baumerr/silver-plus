@@ -3,11 +3,19 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
+<<<<<<< Updated upstream
 import Login from './pages/Login';
 import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+=======
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import NoMatch from "./pages/NoMatch";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
+>>>>>>> Stashed changes
 
 import Header from './components/Nav';
 import Footer from './components/Footer';
