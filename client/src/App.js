@@ -13,7 +13,7 @@ import Header from './components/Nav';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
-  uri: '/graphql'
+  uri: "/graphql"
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -42,7 +42,7 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
-              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/profile/:id" component={Profile} />
 
               <Route component={NoMatch} />
             </Switch>

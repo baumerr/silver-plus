@@ -6,9 +6,10 @@ import Auth from '../utils/auth';
 
 const Signup = () => {
     const [formState, setFormState ] = useState({
-        username: '',
-        email: '',
-        password: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
     });
     const [addUser, { error }] = useMutation(ADD_USER);
 
@@ -25,16 +26,27 @@ const Signup = () => {
     // submit the form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        const mutationResponse = await addUser({
+            variables: {
+                firstName: formState.firstName,
+                lastName: formState.lastName,
+                email: formState.email,
+                password: formState.password
+            },
+        });
+        const token = mutationResponse.data.addUser.token;
+        Auth.login(token);
+        console.log(Auth.loggedIn);
 
-        try {
-            const { data } = await addUser({
-                variables: { ...formState },
-            });
+        // try {
+        //     const { data } = await addUser({
+        //         variables: { ...formState },
+        //     });
 
-            Auth.login(data.addUser.token);
-        } catch (e) {
-            console.error(e);
-        }
+        //     Auth.login(data.addUser.token);
+        // } catch (e) {
+        //     console.error(e);
+        // }
     };
 
     return (
@@ -46,11 +58,20 @@ const Signup = () => {
                         <form onSubmit={handleFormSubmit}>
                             <input
                             className="form-input"
-                            placeholder="Your username"
-                            name="username"
-                            type="username"
-                            id="username"
-                            value={formState.username}
+                            placeholder="Your First Name"
+                            name="firstName"
+                            type="firstName"
+                            id="firstName"
+                            value={formState.firstName}
+                            onChange={handleChange}
+                            />
+                            <input
+                            className="form-input"
+                            placeholder="Your Last Name"
+                            name="lastName"
+                            type="lastName"
+                            id="lastName"
+                            value={formState.lastName}
                             onChange={handleChange}
                             />
                             <input

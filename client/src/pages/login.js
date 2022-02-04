@@ -20,22 +20,33 @@ const Login = (props) => {
     // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
         try {
-            const { data } = await login({
-                variables: { ...formState },
+            const mutationResponse = await login({
+                variables: { email: formState.email, password: formState.password }
             });
-
-            Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
+            console.log('hello')
+            const token = mutationResponse.data.login.token;
+            Auth.login(token);
+        } catch(e) {
+            console.log(e);
+            console.log(error);
         }
 
+        // try {
+        //     const { data } = await login({
+        //         variables: { ...formState },
+        //     });
+
+        //     Auth.login(data.login.token);
+        // } catch (e) {
+        //     console.error(e);
+        // }
+
         // clear the form values
-        setFormState({
-            email: '',
-            password: '',
-        });
+        // setFormState({
+        //     email: "",
+        //     password: "",
+        // });
     };
 
     return (
@@ -51,7 +62,7 @@ const Login = (props) => {
                             name='email'
                             type='email'
                             id='email'
-                            value={formState.email}
+                            // value={formState.email}
                             onChange={handleChange}
                             />
                             <input
@@ -60,7 +71,7 @@ const Login = (props) => {
                             name='password'
                             type='password'
                             id='password'
-                            value={formState.password}
+                            // value={formState.password}
                             onChange={handleChange}
                             />
                             <button className='btn d-block w-100' type='submit'>
