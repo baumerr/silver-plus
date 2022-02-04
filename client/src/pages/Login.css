@@ -16,11 +16,11 @@
     margin: 1vh 1vh;
     background-image: linear-gradient(lightblue,blue,black);
 }
-.subText Link {
-    text-decoration: none;
-}
 
 .btn {
     font-weight: bolder;
     width: 5vw;
+}
+.form-input {
+    
 }
