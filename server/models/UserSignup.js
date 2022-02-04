@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const detailSchema = require('./Details');
+const detailSchema = require("./Details");
 
 const { Schema } = mongoose;
 
@@ -27,20 +27,26 @@ const userSchema = new Schema({
     minlength: 8,
   },
   details: [detailSchema],
+  matches: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
-userSchema.pre('save', async function(next) {
-    if (this.isNew || this.isModified('password')) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.password, saltRounds);
-    }
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
 
-    next();
+  next();
 });
 
-userSchema.methods.isCorrectPassword = async function(password) {
-    return await bcrypt.compare(password, this.password);
-}
+userSchema.methods.isCorrectPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
 const UserSignup = mongoose.model("User", userSchema);
 

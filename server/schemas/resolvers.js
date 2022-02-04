@@ -141,6 +141,18 @@ const resolvers = {
       }
       throw new AuthenticationError('You must be logged in to send messages!');
     },
+    // matchUser: async (parent, args, context) => {
+    //   if(context.user) {
+    //     const match = await UserSignup.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $addToSet: { matches: args._id } },
+    //       { new: true, runValidators: true }
+    //     );
+
+    //     return match;
+    //   }
+    //   throw new AuthenticationError('You must be logged in to match with someone!');
+    // }
   }
 };
 
