@@ -47,6 +47,6 @@ This project has a Other license.
 * You can contribute by giving your opinions or ideas for additional features.
 
 ## Questions
-Here is the link to my Github: [github.com/shanthosh3](github.com/shanthosh3)
-If you have any questions regarding the project please do not hesitate to contact me at:
+Here is the link to my Github: [github.com/shanthosh3](github.com/shanthosh3)<br>
+If you have any questions regarding the project please do not hesitate to contact me at:<br>
 Email: [y.shanthosh@gmail.com](mailto:y.shanthosh@gmail.com)
