@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 
 import Header from './components/Nav';
 import Footer from './components/Footer';
+import Messages from './components/Messages';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -42,7 +43,8 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
-              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/profile/:email?" component={Profile} />
+              <Route exact path="/message/:email?" component={Messages} />
 
               <Route component={NoMatch} />
             </Switch>

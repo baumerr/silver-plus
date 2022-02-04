@@ -62,3 +62,16 @@ query users {
     }
   }
 `;
+
+export const QUERY_MESSAGES = gql`
+query messages($email: String) {
+    messages(email: $email) {
+        _id
+        senderid
+        chainid
+        content
+        createdAt
+        updatedAt
+    }
+
+}`
