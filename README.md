@@ -36,9 +36,9 @@
 This project has a Other license.
 
 ## Contributors
-*Randal Baumer Github: [https://github.com/baumerr](https://github.com/baumerr) Email: [randy.baumer@hotmail.com](mailto:randy.baumer@hotmail.com)
-*Robert William Github: [https://github.com/rawc72](https://github.com/rawc72) Email: [mailto:rawc@me.com](mailto:rawc@me.com)
-*Fairfax Lovelace Github: [https://github.com/flovelace](https://github.com/flovelace) Email: [lovelace.af@gmail.com](mailto:lovelace.af@gmail.com)
+* Randal Baumer Github: [https://github.com/baumerr](https://github.com/baumerr) Email: [randy.baumer@hotmail.com](mailto:randy.baumer@hotmail.com)
+* Robert William Github: [https://github.com/rawc72](https://github.com/rawc72) Email: [mailto:rawc@me.com](mailto:rawc@me.com)
+* Fairfax Lovelace Github: [https://github.com/flovelace](https://github.com/flovelace) Email: [lovelace.af@gmail.com](mailto:lovelace.af@gmail.com)
   
 ## Contribution
 *You can contribute by testing the app and give feedbacks. 
