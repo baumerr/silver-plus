@@ -4,6 +4,8 @@ const detailSchema = require('./Details');
 
 const { Schema } = mongoose;
 
+// add matches for Model
+
 const userSchema = new Schema({
   firstName: {
     type: String,
