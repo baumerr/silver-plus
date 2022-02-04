@@ -19,7 +19,7 @@
  ## Usage
  * Given a dating site for seniors, when I visit the site for the first time I am presented with the homepage, which includes a welcome message advising me to either log in or sign up, provides guidance as to the the security and confidential nature of the site, testimonials from customers, and provides the options to either log-in or sign-up. 
  * When I choose to sign up, I am taken to a page where I am asked to enter predetermined demographic information on myself and my dating interest, and prompted to create a username and password. 
- * When I click on the submit button in the sign-up page, my user information and credentials are saved, I am prompte to choose whether I want the basic or paid subscription.  
+ * When I click on the submit button in the sign-up page, my user information and credentials are saved, I am prompted to choose whether I want the basic or paid subscription.  
  * If I choose the basic (free) subscription, I am logged in. If I choose the paid subscription, I am prompted for my payment information and once that information is verified, I am logged in. 
  * When I log in for the first time, then I am taken to a landing page where I have a dashboard-style display of how many people have seen my profile on a no-name basis, and I am provided with potential matches. 
  * When I click on the link to a potential match profile, I am taken to their profile page where basic information is displayed and I am given the option to start a conversation. 
@@ -37,7 +37,7 @@ This project has a Other license.
 
 ## Contributors
 * Randal Baumer Github: [https://github.com/baumerr](https://github.com/baumerr) Email: [randy.baumer@hotmail.com](mailto:randy.baumer@hotmail.com)
-* Robert William Github: [https://github.com/rawc72](https://github.com/rawc72) Email: [mailto:rawc@me.com](mailto:rawc@me.com)
+* Robert Williams Github: [https://github.com/rawc72](https://github.com/rawc72) Email: [mailto:rawc@me.com](mailto:rawc@me.com)
 * Fairfax Lovelace Github: [https://github.com/flovelace](https://github.com/flovelace) Email: [lovelace.af@gmail.com](mailto:lovelace.af@gmail.com)
   
 ## Contribution
