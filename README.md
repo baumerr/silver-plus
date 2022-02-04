@@ -11,7 +11,6 @@
  * [License](#license)
  * [Contributors](#Contributors)
  * [Contribution](#Contribution)
- * [Tests](#Tests)
  * [Questions](#Questions)
  
  ## Installation
