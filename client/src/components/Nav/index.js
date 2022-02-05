@@ -19,17 +19,11 @@ const Nav = () => {
 
                 <div className='text-center'>
                     {Auth.loggedIn() ? (
-                        <>
-                            <a href="/profile" class='Links'>My Silver Plus Profile</a>
-                            <a href="/" onClick={logout}>
-                                Logout
-                            </a>
-                        </>
+                            <><a href="/profile" class='Links'>My Silver Plus Profile</a><a href="/" onClick={logout}>
+                            Logout
+                        </a></>
                     ) : (
-                        <>
-                            <a href="/login" class='Links'>Login</a> <br></br>
-                            <a href="/signup" class='Links'>Sign-Up</a>
-                        </>
+                            <><a href="/login" class='Links'>Login</a><br></br><a href="/signup" class='Links'>Sign-Up</a></>
                     )}
                 </div>
             </div></>

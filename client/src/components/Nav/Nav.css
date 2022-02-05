@@ -24,4 +24,6 @@
 .Links {
     text-decoration: none;
     color: black;
+    font-weight: bolder;
+    border: 1rem;
 }
