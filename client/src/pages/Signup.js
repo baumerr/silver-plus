@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
+import './Signup.css';
 
 const Signup = () => {
     const [formState, setFormState ] = useState({
@@ -52,7 +52,7 @@ const Signup = () => {
     return (
         <main className="flex-row justify-center mb-4">
             <div className="col-12 col-md-6">
-                <div className="card">
+                <div className="card-signup">
                     <h4 className="card-header">Sign Up</h4>
                     <div className="card-body">
                         <form onSubmit={handleFormSubmit}>
@@ -73,7 +73,8 @@ const Signup = () => {
                             id="lastName"
                             value={formState.lastName}
                             onChange={handleChange}
-                            />
+                            /> 
+                            <br></br> <br></br>
                             <input
                             className="form-input"
                             placeholder="Your email"
@@ -81,7 +82,8 @@ const Signup = () => {
                             type="email"
                             value={formState.email}
                             onChange={handleChange}
-                            />
+                            /> 
+                            <br></br> <br></br>
                             <input
                             className="form-input"
                             placeholder="******"
@@ -90,7 +92,7 @@ const Signup = () => {
                             id="password"
                             value={formState.password}
                             onChange={handleChange}
-                            />
+                            /> <br></br><br></br>
                             <button className="btn d-block w-100" type="submit">
                                 Submit
                             </button>

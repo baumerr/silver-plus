@@ -1,0 +1,15 @@
+.container-footer{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 30vw;
+    bottom: 5px;
+    right: 33vw;
+    margin: 1vh 1vh;
+    font-weight: bolder;
+}
+
+.footer-link{
+    font-weight: bolder;
+}
+

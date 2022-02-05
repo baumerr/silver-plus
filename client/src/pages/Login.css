@@ -1,0 +1,23 @@
+.card-login{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50vh;
+    left: 44vw;
+    width:13vw;
+    height: auto;
+    justify-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    border-style: groove;
+    border-radius: 1.5rem;
+    border-color: black;
+    padding: 1vh 1vh;
+    margin: 1vh 1vh;
+    background-image: linear-gradient(lightblue,blue,black);
+}
+
+.btn {
+    font-weight: bolder;
+    width: 5vw;
+}
