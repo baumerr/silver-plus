@@ -10,4 +10,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    background-image: linear-gradient(rgb(248, 140, 140), rgb(250, 78, 78), rgb(214, 4, 4),rgb(102, 3, 3),black);
 }
+/* .root {
+  background-image: linear-gradient(rgb(248, 140, 140), rgb(250, 78, 78), rgb(214, 4, 4),rgb(102, 3, 3),black);
+} */
